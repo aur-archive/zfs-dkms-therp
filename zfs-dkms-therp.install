@@ -1,0 +1,14 @@
+post_install() {
+    VERSION=${1%-*}
+    dkms install -m zfs/$VERSION
+}
+
+post_upgrade() {
+    VERSION=${1%-*}
+    dkms install -m zfs/$VERSION
+}
+
+pre_remove() {
+    VERSION=${1%-*}
+    dkms remove -m zfs/$VERSION --all
+}
